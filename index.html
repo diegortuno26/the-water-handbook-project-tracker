@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Water Handbook — Ficha Técnica de Registro de Proyectos EPC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0A192F',
+              dark: '#07111E',
+              card: '#0F243E',
+              blue: '#0284C7',
+              cyan: '#06B6D4',
+              accent: '#38BDF8',
+              surface: '#132B47',
+              border: '#1E3E62'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #07111E;
+      color: #E2E8F0;
+    }
+    .custom-input {
+      background-color: #0F243E;
+      border: 1px solid #1E3E62;
+      transition: all 0.2s ease;
+    }
+    .custom-input:focus {
+      border-color: #38BDF8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+      outline: none;
+    }
+    .pill-radio:checked + label {
+      background-color: #0284C7;
+      border-color: #38BDF8;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans antialiased py-8 px-4 sm:px-6 lg:px-8">
+
+  <!-- Header Container -->
+  <div class="max-w-4xl mx-auto mb-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-brand-border gap-4">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-sky-950 text-sky-400 border border-sky-800">
+            Sección 01 — Project Tracker
+          </span>
+          <span class="text-xs font-mono text-slate-400">Edición 2026-2027</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-mono">
+          THE WATER HANDBOOK
+        </h1>
+        <p class="text-sm text-slate-400 mt-1">
+          Directorio Industrial y Catastro de Plantas Hídricas en Iberoamérica y Estados Unidos
+        </p>
+      </div>
+
+      <div class="bg-brand-card p-3 rounded-xl border border-brand-border text-xs text-slate-300 max-w-xs">
+        <div class="flex items-center gap-2 font-semibold text-sky-400 mb-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Indexación Editorial Gratuita
+        </div>
+        Los proyectos registrados se publican formalmente en el anuario impreso y en la plataforma SaaS ante una audiencia de 1.277 directivos del sector.
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Container -->
+  <form id="epcForm" class="max-w-4xl mx-auto space-y-8" onsubmit="handleSubmit(event)">
+
+    <!-- BLOQUE 1: Identificación y Ubicación -->
+    <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xl">
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-border">
+        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold font-mono text-sm">
+          01
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-white tracking-wide">Identificación del Proyecto y Localización</h2>
+          <p class="text-xs text-slate-400">Datos generales de la instalación o skid modular de tratamiento</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Nombre del Proyecto -->
+        <div class="md:col-span-2">
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Nombre del Proyecto o Instalación <span class="text-sky-400">*</span>
+          </label>
+          <input type="text" id="nombreProyecto" required placeholder="Ej: Planta Desalinizadora Minera Centinela / Skid MBR Parque Industrial Apodaca" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+
+        <!-- País -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            País <span class="text-sky-400">*</span>
+          </label>
+          <select id="paisProyecto" required class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white">
+            <option value="" disabled selected>Seleccione un país...</option>
+            <option value="México">México</option>
+            <option value="España">España</option>
+            <option value="Chile">Chile</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Perú">Perú</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+            <option value="Otro">Otro mercado de la región</option>
+          </select>
+        </div>
+
+        <!-- Región / Estado / Municipio -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Región, Estado o Municipio <span class="text-sky-400">*</span>
+          </label>
+          <input type="text" id="ubicacionDetallada" required placeholder="Ej: Antofagasta / Nuevo León / Alicante / São Paulo" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+
+        <!-- Sector de Aplicación -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Sector de Uso Final <span class="text-sky-400">*</span>
+          </label>
+          <select id="sectorAplicacion" required class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white">
+            <option value="" disabled selected>Seleccione el sector...</option>
+            <option value="Minería (Cobre, Litio, Metales)">Minería (Cobre, Litio, Metales)</option>
+            <option value="Alimentos, Bebidas y Cervecería">Alimentos, Bebidas y Cervecería</option>
+            <option value="Manufactura, Química y Automotriz">Manufactura, Química y Automotriz</option>
+            <option value="Energía y Termoeléctricas">Energía y Termoeléctricas</option>
+            <option value="Petróleo y Gas (Upstream / Downstream)">Petróleo y Gas (Upstream / Downstream)</option>
+            <option value="Municipal y Saneamiento Público">Municipal y Saneamiento Público</option>
+            <option value="Hotelería, Turismo y Resorts">Hotelería, Turismo y Resorts</option>
+            <option value="Agricultura Tecnificada">Agricultura Tecnificada</option>
+          </select>
+        </div>
+
+        <!-- Estado Actual -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Estado Actual del Proyecto <span class="text-sky-400">*</span>
+          </label>
+          <select id="estadoProyecto" required class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white">
+            <option value="" disabled selected>Seleccione el estado...</option>
+            <option value="En Operación Comercial">En Operación Comercial</option>
+            <option value="En Construcción / Montaje">En Construcción / Montaje</option>
+            <option value="Puesta en Marcha (Comisionamiento)">Puesta en Marcha (Comisionamiento)</option>
+            <option value="Licitación Adjudicada / En Ingeniería">Licitación Adjudicada / En Ingeniería</option>
+          </select>
+        </div>
+
+        <!-- Cliente Final / Operador con Checkbox de Confidencialidad -->
+        <div class="md:col-span-2 bg-brand-surface/40 p-4 rounded-xl border border-brand-border">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
+            <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              Cliente Final / Empresa Concesionaria
+            </label>
+            <label class="inline-flex items-center cursor-pointer text-xs text-sky-400 select-none">
+              <input type="checkbox" id="confidencialidadCheck" class="sr-only peer" onchange="toggleConfidentiality(this)">
+              <div class="w-8 h-4 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-sky-500 relative"></div>
+              <span class="ml-2">Mantener bajo reserva por NDA / Confidencialidad</span>
+            </label>
+          </div>
+          <input type="text" id="clienteFinal" placeholder="Ej: Arca Continental / Codelco / Enel / Grupo Modelo" class="custom-input w-full px-4 py-2.5 rounded-xl text-sm text-white placeholder-slate-500">
+          <p id="confidencialNota" class="text-[11px] text-slate-400 mt-1.5 hidden">
+            🔒 <span class="text-amber-400">Modo de Reserva Activado:</span> En el anuario se omitirá la razón social y se publicará como "Compañía Industrial Líder del Sector en [Región]".
+          </p>
+        </div>
+
+        <!-- Año de Operación -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Año de Puesta en Marcha (o estimación)
+          </label>
+          <input type="number" id="anioOperacion" min="2010" max="2030" placeholder="2025" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 2: Parámetros Técnicos y Proceso -->
+    <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xl">
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-border">
+        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold font-mono text-sm">
+          02
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-white tracking-wide">Parámetros Hidráulicos y Calidad del Agua</h2>
+          <p class="text-xs text-slate-400">Dimensionamiento, caudal de permeado y características del efluente</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Capacidad Nominal con Selector de Unidades -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Capacidad Nominal de Tratamiento <span class="text-sky-400">*</span>
+          </label>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input type="number" id="capacidadValor" required step="any" placeholder="Ej: 350" class="custom-input flex-1 px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+            <div class="flex rounded-xl bg-brand-surface p-1 border border-brand-border select-none">
+              <input type="radio" name="unidadCapacidad" id="unit_m3d" value="m³/día" class="hidden pill-radio" checked>
+              <label for="unit_m3d" class="px-4 py-2 text-xs font-medium rounded-lg text-slate-300 cursor-pointer transition">m³/día</label>
+
+              <input type="radio" name="unidadCapacidad" id="unit_gpm" value="GPM" class="hidden pill-radio">
+              <label for="unit_gpm" class="px-4 py-2 text-xs font-medium rounded-lg text-slate-300 cursor-pointer transition">GPM</label>
+
+              <input type="radio" name="unidadCapacidad" id="unit_mgd" value="MGD" class="hidden pill-radio">
+              <label for="unit_mgd" class="px-4 py-2 text-xs font-medium rounded-lg text-slate-300 cursor-pointer transition">MGD</label>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-1.5">
+            Nota: The Water Handbook cataloga proyectos modulares descentralizados (&lt; 500 m³/día) e infraestructuras estratégicas de escala industrial.
+          </p>
+        </div>
+
+        <!-- Tipo de Agua de Alimentación -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
+            Fuente de Agua de Alimentación <span class="text-sky-400">*</span>
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <input type="radio" name="fuenteAgua" id="fuente_mar" value="Agua de Mar (SWRO)" class="hidden pill-radio" required>
+              <label for="fuente_mar" class="block p-3.5 rounded-xl border border-brand-border bg-brand-surface/40 text-xs text-slate-300 cursor-pointer transition hover:border-slate-500">
+                <div class="font-bold text-white mb-0.5">Agua de Mar (SWRO)</div>
+                <div class="text-[11px] text-slate-400">Captación marina abierta o pozos playeros</div>
+              </label>
+            </div>
+
+            <div>
+              <input type="radio" name="fuenteAgua" id="fuente_salobre" value="Agua Salobre de Pozo (BWRO)" class="hidden pill-radio">
+              <label for="fuente_salobre" class="block p-3.5 rounded-xl border border-brand-border bg-brand-surface/40 text-xs text-slate-300 cursor-pointer transition hover:border-slate-500">
+                <div class="font-bold text-white mb-0.5">Agua Salobre de Pozo (BWRO)</div>
+                <div class="text-[11px] text-slate-400">Acuíferos subterráneos de media salinidad</div>
+              </label>
+            </div>
+
+            <div>
+              <input type="radio" name="fuenteAgua" id="fuente_lixiviados" value="Efluente Complejo / Lixiviados" class="hidden pill-radio">
+              <label for="fuente_lixiviados" class="block p-3.5 rounded-xl border border-brand-border bg-brand-surface/40 text-xs text-slate-300 cursor-pointer transition hover:border-slate-500">
+                <div class="font-bold text-white mb-0.5">Efluentes Complejos o Lixiviados</div>
+                <div class="text-[11px] text-slate-400">Rellenos sanitarios, salmueras mineras o ZLD</div>
+              </label>
+            </div>
+
+            <div>
+              <input type="radio" name="fuenteAgua" id="fuente_reuso" value="Agua Residual para Reúso (MBR / Terciario)" class="hidden pill-radio">
+              <label for="fuente_reuso" class="block p-3.5 rounded-xl border border-brand-border bg-brand-surface/40 text-xs text-slate-300 cursor-pointer transition hover:border-slate-500">
+                <div class="font-bold text-white mb-0.5">Reúso Industrial / Aguas Residuales</div>
+                <div class="text-[11px] text-slate-400">Sistemas MBR, terciario avanzado o ultrafiltración</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parámetros Numéricos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+              Salinidad de Entrada Aproximada (TDS en mg/L o ppm)
+            </label>
+            <input type="text" id="tdsEntrada" placeholder="Ej: 35.000 mg/L (mar) o 3.200 mg/L (salobre)" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+              Tasa de Conversión o Recuperación (%)
+            </label>
+            <input type="text" id="tasaRecuperacion" placeholder="Ej: 45% (SWRO) o 75-85% (BWRO)" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 3: Componentes y Cadena de Suministro -->
+    <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xl">
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-border">
+        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold font-mono text-sm">
+          03
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-white tracking-wide">Tecnología, Membranas y Cadena de Suministro</h2>
+          <p class="text-xs text-slate-400">Reconocimiento técnico de fabricantes y equipos principales incorporados</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Membranas -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Tecnología y Fabricante de Membranas
+          </label>
+          <input type="text" id="membranasProveedor" placeholder="Ej: DuPont FilmTec / LG Water Solutions / Toray / Fibracast" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+          <p class="text-[11px] text-slate-400 mt-1">Ósmosis inversa, nanofiltración o módulos MBR sumergidos.</p>
+        </div>
+
+        <!-- Recuperación de Energía y Bombeo -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Recuperación de Energía / Bombeo de Alta Presión
+          </label>
+          <input type="text" id="recuperacionEnergia" placeholder="Ej: Energy Recovery Inc. (PX) / Danfoss iSave / FEDCO" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+          <p class="text-[11px] text-slate-400 mt-1">Dispositivo isobárico, turbina Pelton o bomba de desplazamiento positivo.</p>
+        </div>
+
+        <!-- Pretratamiento -->
+        <div class="md:col-span-2">
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Sistema de Pretratamiento Aplicado
+          </label>
+          <input type="text" id="pretratamientoDetalle" placeholder="Ej: Ultrafiltración presurizada + Microfiltración por cartuchos + Dosificación antiincrustante" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 4: Créditos Institucionales y Contacto -->
+    <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xl">
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-border">
+        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold font-mono text-sm">
+          04
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-white tracking-wide">Créditos de Ingeniería y Validación Editorial</h2>
+          <p class="text-xs text-slate-400">Atribución de autoría a la firma EPC y contacto para comprobación de datos</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Razón Social EPC -->
+        <div class="md:col-span-2">
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Empresa EPC, Fabricante del Skid o Integrador <span class="text-sky-400">*</span>
+          </label>
+          <input type="text" id="empresaEpc" required placeholder="Ej: GS Inima / Tedagua / Conseptec GmbH / H2O Innovation / RWL Water" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+          <p class="text-[11px] text-slate-400 mt-1">Esta entidad figurará oficialmente en los créditos de ingeniería de la ficha técnica.</p>
+        </div>
+
+        <!-- Responsable Técnico -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Nombre y Apellidos del Responsable Técnico <span class="text-sky-400">*</span>
+          </label>
+          <input type="text" id="nombreContacto" required placeholder="Ej: Ing. Carlos Valenzuela" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+
+        <!-- Cargo -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Cargo o Posición <span class="text-sky-400">*</span>
+          </label>
+          <input type="text" id="cargoContacto" required placeholder="Ej: Director Técnico / Gerente de Ingeniería de Procesos" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+
+        <!-- Correo Corporativo -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Correo Electrónico Corporativo <span class="text-sky-400">*</span>
+          </label>
+          <input type="email" id="emailContacto" required placeholder="c.valenzuela@empresa-epc.com" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+
+        <!-- Teléfono / WhatsApp -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            Teléfono Directo o WhatsApp
+          </label>
+          <input type="tel" id="telefonoContacto" placeholder="+52 (81) 1234-5678" class="custom-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+        </div>
+
+        <!-- Material Gráfico Disponible -->
+        <div class="md:col-span-2 pt-2">
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
+            Material Gráfico o Audiovisual Disponible para la Ficha
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-brand-border bg-brand-surface/40 cursor-pointer hover:border-slate-500 text-xs text-slate-300">
+              <input type="checkbox" id="fotoDisponible" class="rounded border-slate-700 text-sky-500 focus:ring-sky-400 bg-brand-card">
+              <span>Fotografía en alta resolución de fachada / skids</span>
+            </label>
+
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-brand-border bg-brand-surface/40 cursor-pointer hover:border-slate-500 text-xs text-slate-300">
+              <input type="checkbox" id="diagramaDisponible" class="rounded border-slate-700 text-sky-500 focus:ring-sky-400 bg-brand-card">
+              <span>Esquema de proceso simplificado (PFD)</span>
+            </label>
+
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-brand-border bg-brand-surface/40 cursor-pointer hover:border-slate-500 text-xs text-slate-300">
+              <input type="checkbox" id="videoDisponible" class="rounded border-slate-700 text-sky-500 focus:ring-sky-400 bg-brand-card">
+              <span>Vídeo o recorrido audiovisual autorizado</span>
+            </label>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-2">
+            El equipo editorial se pondrá en contacto para solicitar los archivos finales previa maquetación.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón de Envío -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 pb-12">
+      <div class="text-xs text-slate-400 text-center sm:text-left">
+        Al registrar este proyecto, la información técnica verificada se incluirá en el anuario <br class="hidden sm:inline">
+        <span class="text-white font-semibold">The Water Handbook 2026</span> y en la plataforma de datos.
+      </div>
+      <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-sky-500 hover:bg-sky-400 text-white font-bold text-sm tracking-wide rounded-xl shadow-lg shadow-sky-500/20 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        Registrar Ficha Técnica en el Project Tracker
+      </button>
+    </div>
+  </form>
+
+  <!-- Success Modal Preview -->
+  <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-brand-card border border-brand-border rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">¡Ficha Registrada para Revisión Editorial!</h3>
+            <p class="text-xs text-slate-400">Se generó la vista preliminar en el Project Tracker de The Water Handbook</p>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+
+      <!-- Preview Card -->
+      <div class="bg-brand-dark p-5 rounded-xl border border-brand-border space-y-3 font-mono text-xs">
+        <div class="flex justify-between items-start text-sky-400 font-bold border-b border-brand-border/60 pb-2">
+          <span id="previewNombre" class="text-sm text-white">NOMBRE PROYECTO</span>
+          <span id="previewPais">PAÍS</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-slate-300">
+          <div><span class="text-slate-500">Capacidad:</span> <span id="previewCapacidad" class="text-white"></span></div>
+          <div><span class="text-slate-500">Fuente:</span> <span id="previewFuente" class="text-white"></span></div>
+          <div><span class="text-slate-500">Sector:</span> <span id="previewSector" class="text-white"></span></div>
+          <div><span class="text-slate-500">Estado:</span> <span id="previewEstado" class="text-white"></span></div>
+          <div class="col-span-2"><span class="text-slate-500">Ingeniería / EPC:</span> <span id="previewEpc" class="text-sky-300"></span></div>
+          <div class="col-span-2"><span class="text-slate-500">Cliente / Operador:</span> <span id="previewCliente" class="text-slate-300"></span></div>
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-400 bg-brand-surface/40 p-4 rounded-xl border border-brand-border">
+        El equipo de dirección editorial de <strong class="text-white">The Water Handbook</strong> auditará la información y se pondrá en contacto con el responsable técnico para la revisión final de la maqueta previa a imprenta.
+      </div>
+
+      <div class="flex justify-end gap-3 pt-2">
+        <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-brand-surface hover:bg-slate-700 text-xs font-semibold text-white transition">
+          Cerrar Vista Previa
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleConfidentiality(checkbox) {
+      const input = document.getElementById('clienteFinal');
+      const nota = document.getElementById('confidencialNota');
+      if (checkbox.checked) {
+        input.value = "Confidencial / Bajo reserva industrial (NDA)";
+        input.disabled = true;
+        input.classList.add('opacity-60', 'bg-slate-900');
+        nota.classList.remove('hidden');
+      } else {
+        input.value = "";
+        input.disabled = false;
+        input.classList.remove('opacity-60', 'bg-slate-900');
+        nota.classList.add('hidden');
+      }
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      const nombre = document.getElementById('nombreProyecto').value;
+      const pais = document.getElementById('paisProyecto').value;
+      const capacidad = document.getElementById('capacidadValor').value;
+      const unidad = document.querySelector('input[name="unidadCapacidad"]:checked').value;
+      const fuente = document.querySelector('input[name="fuenteAgua"]:checked') ? document.querySelector('input[name="fuenteAgua"]:checked').value : 'No especificada';
+      const sector = document.getElementById('sectorAplicacion').value;
+      const estado = document.getElementById('estadoProyecto').value;
+      const epc = document.getElementById('empresaEpc').value;
+      const cliente = document.getElementById('confidencialCheck').checked ? 'Bajo reserva de confidencialidad' : (document.getElementById('clienteFinal').value || 'Público');
+
+      document.getElementById('previewNombre').textContent = nombre.toUpperCase();
+      document.getElementById('previewPais').textContent = pais.toUpperCase();
+      document.getElementById('previewCapacidad').textContent = capacidad + ' ' + unidad;
+      document.getElementById('previewFuente').textContent = fuente;
+      document.getElementById('previewSector').textContent = sector;
+      document.getElementById('previewEstado').textContent = estado;
+      document.getElementById('previewEpc').textContent = epc;
+      document.getElementById('previewCliente').textContent = cliente;
+
+      document.getElementById('successModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
