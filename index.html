@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Water Handbook — Ficha Técnica de Registro de Proyectos EPC</title>
+  <meta name="description" content="Directorio Industrial y Catastro de Plantas Hídricas en Iberoamérica y Estados Unidos. Registro formal para el anuario impreso The Water Handbook y la plataforma de datos.">
+  <meta property="og:title" content="The Water Handbook — Registro de Proyectos EPC (Project Tracker)">
+  <meta property="og:description" content="Directorio Industrial y Catastro de Plantas Hídricas en Iberoamérica y Estados Unidos. Indexación editorial gratuita para el anuario y la plataforma de datos ante 1.277 directivos.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://the-water-handbook-project-tracker.vercel.app">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -514,6 +519,41 @@
       document.getElementById('previewEstado').textContent = estado;
       document.getElementById('previewEpc').textContent = epc;
       document.getElementById('previewCliente').textContent = cliente;
+
+      // Envío automático estructurado a diegortuno@gmail.com
+      const payload = {
+        _subject: "Nuevo Proyecto EPC Registrado: " + nombre + " (" + pais + ")",
+        origen: "The Water Handbook — Project Tracker (the-water-handbook-project-tracker.vercel.app)",
+        proyecto: nombre,
+        pais: pais,
+        ubicacion: document.getElementById('ubicacionDetallada').value,
+        sector: sector,
+        estado: estado,
+        empresaEpc: epc,
+        cliente: cliente,
+        capacidad: capacidad + ' ' + unidad,
+        fuenteAgua: fuente,
+        tdsEntrada: document.getElementById('tdsEntrada').value || 'No indicado',
+        tasaRecuperacion: document.getElementById('tasaRecuperacion').value || 'No indicada',
+        membranas: document.getElementById('membranasProveedor').value || 'No indicado',
+        recuperacionEnergia: document.getElementById('recuperacionEnergia').value || 'No indicado',
+        pretratamiento: document.getElementById('pretratamientoDetalle').value || 'No indicado',
+        responsableTecnico: document.getElementById('nombreContacto').value,
+        cargo: document.getElementById('cargoContacto').value,
+        email: document.getElementById('emailContacto').value,
+        telefono: document.getElementById('telefonoContacto').value || 'No indicado',
+        fotosDisponibles: document.getElementById('fotoDisponible').checked ? "Sí" : "No",
+        diagramaPFD: document.getElementById('diagramaDisponible').checked ? "Sí" : "No",
+        videoDisponible: document.getElementById('videoDisponible').checked ? "Sí" : "No",
+        _captcha: "false",
+        _template: "table"
+      };
+
+      fetch("https://formsubmit.co/ajax/diegortuno@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      }).catch(err => console.log('Envío en segundo plano:', err));
 
       document.getElementById('successModal').classList.remove('hidden');
     }
